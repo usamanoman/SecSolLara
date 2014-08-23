@@ -1,6 +1,6 @@
 <?php
 
-class ForumsController extends \BaseController {
+class ForumsController extends BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -11,6 +11,7 @@ class ForumsController extends \BaseController {
 	public function index()
 	{
 		//
+		return View::make('forums.index');
 	}
 
 	/**

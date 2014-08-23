@@ -2,7 +2,6 @@
 
 
 @section('content')
-    <h1>User Sign Up</h1>
     <div>
 		@if(isset($message))
 			<p class="notfiy">
@@ -17,7 +16,7 @@
             <li >{{ $error }}</li>
         @endforeach
     	</ul>
-		{{Form::open(array('action' => 'UsersController@store', 'method' => 'post'))}}
+		{{Form::open(array('action' => 'UsersController@store', 'method' => 'post','class'=>'well'))}}
 		  
 
 		  <div class="form-group">
@@ -39,12 +38,12 @@
 		  <div class="form-group">
 		    <label for="userrole">Role</label>
 		    <select class="form-control" id="userrole" name="role" >
-				<option>Admin</option>
-				<option>Moderator</option>
-				<option>User</option>
+				<option>Company</option>
 				<option>Contractor</option>
 		    </select>
 		  </div>
+
+		  
 		  
 
 		   {{ Form::submit('Register', array('class'=>'btn btn-large btn-primary btn-block'))}}

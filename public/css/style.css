@@ -5,6 +5,18 @@
 	color:white;
 }
 
+
 .wide_margin{
 	margin-top: 130px;
+}
+
+.heading h2{
+	text-align: center !important;
+}
+.navbar-brand{
+				padding: 0px !important;
+}
+
+.search_row{
+	margin-top: 90px;
 }

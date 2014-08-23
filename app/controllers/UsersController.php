@@ -126,7 +126,7 @@ class UsersController extends \BaseController {
  
 	    if ($validator->passes()) {
 	        if (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password')), true)) {
-			    return Redirect::to('user/dashboard');
+			    return Redirect::to('forum');
 			}
 	    } else {
 	        // validation has failed, display error messages

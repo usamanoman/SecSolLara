@@ -2,7 +2,8 @@
 
 
 @section('content')
-    <h1>Login To LaraForums</h1>
+    <Div class="heading">
+    </Div>
     <div>
     	@if(isset($message))
 			<p class="notfiy">
@@ -19,7 +20,7 @@
     	</ul>    
 		
 
-		{{ Form::open(array('url'=>'user/login', 'role'=>'form')) }}
+		{{ Form::open(array('url'=>'user/login', 'role'=>'form','class'=>'well')) }}
 		  <div class="form-group">
 		    <label for="exampleInputEmail1">Email address</label>
 		   {{ Form::text('email', null, array('class'=>'form-control', 'placeholder'=>'Email Address')) }}
