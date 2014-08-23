@@ -1,7 +1,9 @@
 <?php
 
 class UsersController extends \BaseController {
-
+	public function __construct() {
+    	$this->beforeFilter('csrf', array('on'=>'post'));
+	}
 	/**
 	 * Display a listing of the resource.
 	 * GET /users
@@ -39,10 +41,18 @@ class UsersController extends \BaseController {
 		$validator = Validator::make(Input::all(), User::$rules);
  
 	    if ($validator->passes()) {
-	        echo "Validation Passed";
+	        $user = new User;
+		    $user->firstname = Input::get('firstname');
+		    $user->lastname = Input::get('lastname');
+		    $user->email = Input::get('email');
+		    $user->password = Hash::make(Input::get('password'));
+		    $user->role = Input::get('role');
+		    $user->save();
+		 
+		    return Redirect::to('user/create')->with(array('message'=>'Thanks for registering!','title'=>'Sign Up'));
 	    } else {
 	        // validation has failed, display error messages
-	         return View::make('users.create')->with('title','Sign Up')->withErrors($validator)->withInput();
+	         return Redirect::to('user/create')->with('title','Sign Up')->withErrors($validator)->withInput();
    			//echo "Not Valid";
 	    }
 	}
@@ -110,4 +120,27 @@ class UsersController extends \BaseController {
 		return View::make('users.login')->with(array('title'=>'Login'));
 	}
 
+
+	public function postlogin(){
+		$validator = Validator::make(Input::all(), User::$loginrules);
+ 
+	    if ($validator->passes()) {
+	        if (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password')))) {
+			    return Redirect::to('user/dashboard');
+			}
+	    } else {
+	        // validation has failed, display error messages
+	         return Redirect::to('user/login')->with('title','Login')->withErrors($validator)->withInput();
+   			//echo "Not Valid";
+	    }
+	}
+
+	public function panel(){
+		if(!Auth::check()){
+			return Redirect::to('/');
+		}
+		else{
+			return View::make('users.panel')->with(array('title'=>'Welcome'));
+		}
+	}
 }

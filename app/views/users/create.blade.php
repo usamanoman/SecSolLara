@@ -4,7 +4,14 @@
 @section('content')
     <h1>User Sign Up</h1>
     <div>
+		@if(isset($message))
+			<p class="notfiy">
+				{{$message}}
+			</p>
+		@endif
 
+
+		
     	<ul class="notfiy">
     	@foreach($errors->all() as $error)
             <li >{{ $error }}</li>
@@ -12,11 +19,6 @@
     	</ul>
 		{{Form::open(array('action' => 'UsersController@store', 'method' => 'post'))}}
 		  
-			
-    
-    
-    
-   
 
 		  <div class="form-group">
 		    <label for="firstname">First Name</label>
@@ -28,7 +30,7 @@
 		  </div>
 		  <div class="form-group">
 		    <label for="email">Email address</label>
-		   {{ Form::text('email', null, array('class'=>'form-control', 'placeholder'=>'Email Address')) }}
+		   {{ Form::email('email', null, array('class'=>'form-control', 'placeholder'=>'Email Address')) }}
 		  </div>
 		  <div class="form-group">
 		    <label for="password">Password</label>

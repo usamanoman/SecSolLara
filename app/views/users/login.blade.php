@@ -4,21 +4,32 @@
 @section('content')
     <h1>Login To LaraForums</h1>
     <div>
-    	@if($errors)
-    		<p class="notify"></p>
-    	@endif
-    	
-		<form role="form">
+    	@if(isset($message))
+			<p class="notfiy">
+				{{$message}}
+			</p>
+		@endif
+
+
+		
+    	<ul class="notfiy">
+    	@foreach($errors->all() as $error)
+            <li >{{ $error }}</li>
+        @endforeach
+    	</ul>    
+		
+
+		{{ Form::open(array('url'=>'user/login', 'role'=>'form')) }}
 		  <div class="form-group">
 		    <label for="exampleInputEmail1">Email address</label>
-		    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+		   {{ Form::text('email', null, array('class'=>'form-control', 'placeholder'=>'Email Address')) }}
 		  </div>
 		  <div class="form-group">
 		    <label for="exampleInputPassword1">Password</label>
-		    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+		    {{ Form::password('password', array('class'=>'form-control', 'placeholder'=>'Password')) }}
 		  </div>
-		  <button type="submit" class="btn btn-default">Submit</button>
-		</form>
+		  {{ Form::submit('Login', array('class'=>'btn btn-large btn-primary btn-block'))}}
+		{{ Form::close() }}
 
 
     </div>
