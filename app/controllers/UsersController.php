@@ -125,7 +125,7 @@ class UsersController extends \BaseController {
 		$validator = Validator::make(Input::all(), User::$loginrules);
  
 	    if ($validator->passes()) {
-	        if (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password')))) {
+	        if (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password')), true)) {
 			    return Redirect::to('user/dashboard');
 			}
 	    } else {
@@ -142,5 +142,10 @@ class UsersController extends \BaseController {
 		else{
 			return View::make('users.panel')->with(array('title'=>'Welcome'));
 		}
+	}
+
+	public function logout(){
+		Auth::logout();
+    	return Redirect::to('user/login')->with('message', 'Your are now logged out!');
 	}
 }

@@ -14,9 +14,19 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li ><a href="#">Home</a></li>
-        <li>{{ link_to_route('user.create','Sign Up') }}</li>
-        <li>{{ link_to_route('user.login','Login') }}</li>
+        @if(!Auth::check())
+          <li ><a href="#">Home</a></li>
+          <li>{{ link_to_route('user.create','Sign Up') }}</li>
+          <li>{{ link_to_route('user.login','Login') }}</li>
+
+        @else
+          <?php $role = Auth::user()->role; ?>
+          @if($role=='Admin')
+            <li>{{ link_to_route('user.logout','Logout') }}</li>
+          @else
+            {{"He is not admin"}}
+          @endif
+        @endif
         
       </ul>
       

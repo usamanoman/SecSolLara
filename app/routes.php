@@ -13,6 +13,7 @@
 Route::get('/','HomeController@index');
 Route::get('/user/login',array('as'=>'user.login','uses'=>'UsersController@login'));
 Route::get('/user/dashboard',array('as'=>'user.panel','uses'=>'UsersController@panel'));
+Route::get('/user/logout',array('as'=>'user.logout','uses'=>'UsersController@logout'));
 Route::post('/user/login',array('as'=>'user.postlogin','uses'=>'UsersController@postlogin'));
 Route::resource('user', 'UsersController');
 Route::resource('forum', 'ForumsController');
