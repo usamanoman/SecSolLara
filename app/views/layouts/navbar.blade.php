@@ -1,35 +1,40 @@
-<nav class="navbar navbar-default" role="navigation">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">LaraForums</a>
+<div class="navbar navbar-default light-menu navbar-fixed-top" role="navigation">
+      <!-- BEGIN: NAV-CONTAINER -->
+      <div class="nav-container container">
+          <div class="navbar-header">
+              <!-- BEGIN: TOGGLE BUTTON (RESPONSIVE)-->
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <!-- BEGIN: LOGO -->
+              {{ HTML::image('images/SSW.png', "Security Solutions Worldwide Logo", array('class' => 'navbar-brand nav-to logo')) }}
+            </div>
+            
+            <!-- BEGIN: MENU -->       
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav navbar-right">
+              @if(Auth::check())
+                <li><a class="nav-to" href="forum.html">Forum</a></li>
+                <li><a class="nav-to" href="joblisting.html">Job Listings</a></li>
+                <li>{{ HTML::link('user/logout','Logout',array('class'=>'nav-to')) }}</li>
+              @else
+                <li><a class="nav-to" href="#home-fsslider">HOME</a></li>
+                <li><a class="nav-to" href="#about">About US</a></li>
+                  <li><a class="nav-to" href="#services">Services</a></li> 
+                <li><a class="nav-to" href="#clients">CLIENTS</a></li>
+                <li><a class="nav-to" href="#contacts">Contact</a></li>
+                <li><a class="nav-to" href="forum.html">Forum</a></li>
+                <li><a class="nav-to" href="joblisting.html">Job Listings</a></li>
+              @endif            
+              
+             
+          </ul>
+        </div>
+        <!-- END: MENU -->
+      </div>
+      <!--END: NAV-CONTAINER -->
     </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        @if(!Auth::check())
-          <li ><a href="#">Home</a></li>
-          <li>{{ link_to_route('user.create','Sign Up') }}</li>
-          <li>{{ link_to_route('user.login','Login') }}</li>
-
-        @else
-          <?php $role = Auth::user()->role; ?>
-          @if($role=='Admin')
-            <li>{{ link_to_route('user.logout','Logout') }}</li>
-          @else
-            {{"He is not admin"}}
-          @endif
-        @endif
-        
-      </ul>
-      
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>

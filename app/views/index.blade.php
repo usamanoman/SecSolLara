@@ -51,41 +51,7 @@
   		<!-- BEGIN: HEADER BAR 
 	  		 OPTIONS: "light-menu" , "hide-on-start" 
   		-->
-		<div class="navbar navbar-default light-menu navbar-fixed-top" role="navigation">
-			<!-- BEGIN: NAV-CONTAINER -->
-			<div class="nav-container container">
-		    	<div class="navbar-header">
-		        	<!-- BEGIN: TOGGLE BUTTON (RESPONSIVE)-->
-		        	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-			        	<span class="sr-only">Toggle navigation</span>
-			        	<span class="icon-bar"></span>
-			        	<span class="icon-bar"></span>
-			        	<span class="icon-bar"></span>
-			        </button>
-			        
-		        	<!-- BEGIN: LOGO -->
-			        <img class="navbar-brand nav-to logo" src="images/SSW.png"></img>
-		        </div>
-		       	
-		       	<!-- BEGIN: MENU -->       
-		        <div class="navbar-collapse collapse">
-			        <ul class="nav navbar-nav navbar-right">
-				    	<li><a class="nav-to" href="#home-fsslider">HOME</a></li>
-				    	<li><a class="nav-to" href="#about">About US</a></li>
-				        <li><a class="nav-to" href="#services">Services</a></li> 
-					    <li><a class="nav-to" href="#clients">CLIENTS</a></li>
-					    <li><a class="nav-to" href="#contacts">Contact</a></li>
-					    <li><a class="nav-to" href="forum.html">Forum</a></li>
-					    <li><a class="nav-to" href="joblisting.html">Job Listings</a></li>
-					    
-					    
-					   
-					</ul>
-				</div>
-				<!-- END: MENU -->
-			</div>
-			<!--END: NAV-CONTAINER -->
-		</div>
+		@include('layouts.navbar')
 		<!-- END: HEADER BAR -->        
 	  	
 	  	
@@ -138,7 +104,7 @@
 								data-endeasing="Power1.easeIn"
 								data-captionhidden="off"
 								style="z-index: 6">
-								<a class="nav-to des-button-white des-button-white-1 des-button-white-1d bt1" href="#"><span>SIGN UP</span></a>
+								<a class="nav-to des-button-white des-button-white-1 des-button-white-1d bt1" href="{{ URL::route('user.create') }}"><span>SIGN UP</span></a>
 							</div>
 							
 							<!-- Caption #04 -->
@@ -153,7 +119,7 @@
 								data-endeasing="Power1.easeIn"
 								data-captionhidden="off"
 								style="z-index: 6">
-								<a class="nav-to des-button-white des-button-white-1 des-button-white-1d bt2" href="#"><span>LOGIN</span></a>
+								<a class="nav-to des-button-white des-button-white-1 des-button-white-1d bt2" href="{{ URL::route('user.login') }}"><span>LOGIN</span></a>
 							</div>
 		
 						</li>
