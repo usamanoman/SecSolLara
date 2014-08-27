@@ -19,9 +19,10 @@ class RepliesController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function create($id)
 	{
 		//
+		
 	}
 
 	/**
@@ -33,6 +34,21 @@ class RepliesController extends \BaseController {
 	public function store()
 	{
 		//
+		if(!Auth::check()){
+			return Redirect::to('/');
+		}
+		$user_id=Auth::user()->id;
+		$reply = new Reply;
+		$reply->content=Input::get('content');
+		$topic_id=Input::get('topic_id');
+		$topic=Topic::find($topic_id);
+		$reply->user_id=$user_id;
+		$reply->forum_id=$topic->forum_id;
+		$reply->topic_id=$topic->id;
+		
+		
+		$reply->save();
+		return Redirect::to('topic/'.$topic_id)->with('topic',$topic);
 	}
 
 	/**

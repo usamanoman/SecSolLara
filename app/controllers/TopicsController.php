@@ -22,6 +22,8 @@ class TopicsController extends \BaseController {
 	public function create()
 	{
 		//
+		$forums = Forum::all();
+		return View::make('topics.create')->with('forums',$forums);
 	}
 
 	/**
@@ -33,6 +35,24 @@ class TopicsController extends \BaseController {
 	public function store()
 	{
 		//
+
+		$validator = Validator::make(Input::all(), Topic::$rules);
+ 
+	    if ($validator->passes()) {
+	    	$user_id=Auth::user()->id;
+	    	$topic = new Topic;
+			$topic->title=Input::get('title');
+			$topic->content=Input::get('content');
+			$topic->keywords=Input::get('keywords');
+			$topic->user_id=$user_id;
+			$topic->forum_id=Input::get('forum_id');
+			$topic->save();
+			return Redirect::to('topic/create')->with(array('message'=>'The topic has been posted in the forum','title'=>'Create Topic'));
+	    }
+	    else{
+	    	 return Redirect::to('topic/create')->with('title','Create Topic')->withErrors($validator)->withInput();
+	    }
+		
 	}
 
 	/**
@@ -45,6 +65,12 @@ class TopicsController extends \BaseController {
 	public function show($id)
 	{
 		//
+
+		if(!Auth::check()){
+			return Redirect::to('/');
+		}
+		$topic=Topic::find($id);
+		return View::make('topics.show')->with(array('topic'=>$topic));
 	}
 
 	/**

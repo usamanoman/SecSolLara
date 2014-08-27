@@ -18,6 +18,7 @@
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav navbar-right">
               @if(Auth::check())
+                <li><a class="nav-to" href="{{ URL::route('forum.create') }}">Create A Forum</a></li>
                 <li><a class="nav-to" href="{{ URL::route('forum.index') }}">Forum</a></li>
                 <li><a class="nav-to" href="joblisting.html">Job Listings</a></li>
                 <li>{{ HTML::link('user/logout','Logout',array('class'=>'nav-to')) }}</li>
@@ -27,6 +28,8 @@
                   <li><a class="nav-to" href="#services">Services</a></li> 
                 <li><a class="nav-to" href="#clients">CLIENTS</a></li>
                 <li><a class="nav-to" href="#contacts">Contact</a></li>
+                <li><a class="nav-to" href="{{ URL::route('user.create') }}">SIGN UP</a></li>
+                <li><a class="nav-to" href="{{ URL::route('user.login') }}">Login</a></li>
                 <li><a class="nav-to" id="forum_link" href="#">Forum</a></li>
                 <li><a class="nav-to" id="joblist_link" href="#">Job Listings</a></li>
               @endif            

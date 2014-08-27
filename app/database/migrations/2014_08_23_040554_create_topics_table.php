@@ -18,8 +18,8 @@ class CreateTopicsTable extends Migration {
 			$table->string('title');
 			$table->text('content');
 			$table->string('keywords');
-			$table->integer('userid');
-			$table->integer('forumid');
+			$table->integer('user_id');
+			$table->integer('forum_id');
 			$table->timestamps();
 		});
 	}

@@ -202,6 +202,38 @@
 							</div>
 							
 								
+
+							<!-- Caption #03 -->
+							<div class="tp-caption lfb"
+								data-x="center"
+								data-hoffset="-85"
+								data-y="350"
+								data-speed="1000"
+								data-start="1800"
+								data-easing="Power4.easeOut"
+								data-endspeed="300"
+								data-endeasing="Power1.easeIn"
+								data-captionhidden="off"
+								style="z-index: 6">
+								<a class="nav-to des-button-white des-button-white-1 des-button-white-1d bt1" href="{{ URL::route('user.create') }}"><span>SIGN UP</span></a>
+							</div>
+							
+							<!-- Caption #04 -->
+							<div class="tp-caption lfb"
+								data-x="center"
+								data-hoffset="85"
+								data-y="350"
+								data-speed="1000"
+								data-start="2000"
+								data-easing="Power4.easeOut"
+								data-endspeed="300"
+								data-endeasing="Power1.easeIn"
+								data-captionhidden="off"
+								style="z-index: 6">
+								<a class="nav-to des-button-white des-button-white-1 des-button-white-1d bt2" href="{{ URL::route('user.login') }}"><span>LOGIN</span></a>
+							</div>
+		
+
 						</li>
 					</ul>
 

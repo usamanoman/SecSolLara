@@ -3958,7 +3958,7 @@ html[xmlns] .slides {display: block;}
 
 .search_row{
 	background-color: #FF8C53;
-
+	margin-top: 90px;
 
 }
 
@@ -4134,4 +4134,11 @@ padding: 10px;
 .user_reply_form textarea{
 	height: 150px;
 	background: #FAF4E4
+}
+
+
+
+.error_messages{
+	margin-left: 50px;
+	
 }

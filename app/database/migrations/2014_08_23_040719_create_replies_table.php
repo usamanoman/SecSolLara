@@ -16,9 +16,9 @@ class CreateRepliesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->text('content');
-			$table->integer('userid');
-			$table->integer('forumid');
-			$table->integer('topicid');
+			$table->integer('user_id');
+			$table->integer('forum_id');
+			$table->integer('topic_id');
 			$table->timestamps();
 		});
 	}

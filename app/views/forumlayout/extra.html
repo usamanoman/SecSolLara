@@ -1,0 +1,28 @@
+
+				<div class="job_listing" >
+					<div class="left_floated_heading_forum">
+					<h2 class="post_heading">{{$forum->title}}</h2>
+				</div>
+				<div class="right_floated_heading_forum">
+					<h2  class="post_heading"> <img src="images/android_count_icon.png" class="count-icon">Create A New Post</h2>
+				</div>
+						
+					<div class="forum_table_container" style="clear:both;">
+						<table class="forum_table">
+							<tr>
+								<th>Topic</th>
+								<th>Posts</th>
+								<th>Last Poster</th>
+							</tr>
+							@foreach($forum->topics as $topic)
+							<tr>
+								<td><a href="forum_single_single.html">{{$topic->title}}</a></td>
+								<td>230</td>
+								<td>H. Helbert Goodman Deamon</td>
+							</tr>
+							@endforeach
+							
+							
+						</table>
+					</div>
+				</div>

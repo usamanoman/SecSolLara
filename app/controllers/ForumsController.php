@@ -11,7 +11,12 @@ class ForumsController extends BaseController {
 	public function index()
 	{
 		//
-		return View::make('forums.index');
+
+		if(!Auth::check()){
+			return Redirect::to('/');
+		}
+		$forums=Forum::all();
+		return View::make('forums.index')->with('forums',$forums);
 	}
 
 	/**
@@ -23,6 +28,8 @@ class ForumsController extends BaseController {
 	public function create()
 	{
 		//
+		
+		return View::make('forums.create')->with('title','Create A Forum');	
 	}
 
 	/**
@@ -34,6 +41,25 @@ class ForumsController extends BaseController {
 	public function store()
 	{
 		//
+		/*
+		$forum = new Forum;
+		$forum->title="Games";
+		$forum->description="This section contains games and its related information";
+		$forum->save();*/
+
+		$validator = Validator::make(Input::all(), Forum::$rules);
+ 
+	    if ($validator->passes()) {
+	    	$topic = new Forum;
+			$topic->title=Input::get('title');
+			$topic->description=Input::get('description');
+			$topic->save();
+			return Redirect::to('forum/create')->with(array('message'=>'The forum has been created','title'=>'Create Forum'));
+	    }
+	    else{
+	    	 return Redirect::to('forum/create')->with('title','Create Forum')->withErrors($validator)->withInput();
+	    }
+
 	}
 
 	/**
@@ -46,6 +72,12 @@ class ForumsController extends BaseController {
 	public function show($id)
 	{
 		//
+
+		if(!Auth::check()){
+			return Redirect::to('/');
+		}
+		$forum=Forum::find($id);
+		return View::make('forums.show')->with('forum',$forum);
 	}
 
 	/**
