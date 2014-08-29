@@ -17,5 +17,6 @@ Route::get('/user/logout',array('as'=>'user.logout','uses'=>'UsersController@log
 Route::post('/user/login',array('as'=>'user.postlogin','uses'=>'UsersController@postlogin'));
 Route::resource('user', 'UsersController');
 Route::resource('forum', 'ForumsController');
+Route::resource('job', 'JobsController');
 Route::resource('topic', 'TopicsController');
 Route::resource('reply', 'RepliesController');

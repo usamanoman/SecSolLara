@@ -20,7 +20,7 @@
               @if(Auth::check())
                 <li><a class="nav-to" href="{{ URL::route('forum.create') }}">Create A Forum</a></li>
                 <li><a class="nav-to" href="{{ URL::route('forum.index') }}">Forum</a></li>
-                <li><a class="nav-to" href="joblisting.html">Job Listings</a></li>
+                <li><a class="nav-to" href="{{ URL::route('job.index') }}">Job Listings</a></li>
                 <li>{{ HTML::link('user/logout','Logout',array('class'=>'nav-to')) }}</li>
               @else
                 <li><a class="nav-to" href="#home-fsslider">HOME</a></li>

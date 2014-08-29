@@ -77,7 +77,7 @@ class ForumsController extends BaseController {
 			return Redirect::to('/');
 		}
 		$forum=Forum::find($id);
-		return View::make('forums.show')->with('forum',$forum);
+		return View::make('forums.show')->with(array('title'=>'Forum Topics','forum'=>$forum));
 	}
 
 	/**
