@@ -70,7 +70,8 @@ class TopicsController extends \BaseController {
 			return Redirect::to('/');
 		}
 		$topic=Topic::find($id);
-		return View::make('topics.show')->with(array('topic'=>$topic));
+		$forums=Forum::all();
+		return View::make('topics.show')->with(array('topic'=>$topic,'forums'=>$forums));
 	}
 
 	/**

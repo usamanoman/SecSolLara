@@ -53,7 +53,8 @@
 
 
 
-
+						<hr>
+						<h2>Reply to this post</h2>
 						<?php $getting_topicid=$topic->id; ?>
 						<div id="user_reply_form" class="user_reply_form">
 								{{Form::open(array('action' => 'RepliesController@store', 'role'=>'form','class'=>'form-horizontal'))}}

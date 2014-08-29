@@ -21,3 +21,10 @@
 	margin-top: 90px;
 }
 
+
+.job_details_table tr th{
+	padding-right: 20px;
+}
+.job_details_table{
+	margin-bottom: 20px;
+}

@@ -82,14 +82,12 @@
 						Hot Topics
 					</h2>
 					<ul>
-						<li><a href="#">Topic One</a></li>
-						<li><a href="#">Topic Two</a></li>
-						<li><a href="#">Topic Three</a></li>
-						<li><a href="#">Topic Four</a></li>
-						<li><a href="#">Topic Five</a></li>
-						<li><a href="#">Topic Six</a></li>
-						<li><a href="#">Topic Seven</a></li>
-						<li><a href="#">Topic Eight</a></li>
+						@foreach($forums as $forum)
+							@foreach($forum->topics as $topic)
+								<li><a href="#">{{$topic->title}}</a></li>
+							@endforeach
+						@endforeach
+						
 						
 					</ul>
 				</div>
@@ -105,6 +103,11 @@
 								<th>Categories</th>
 								<th>Topics</th>
 								<th>Posts</th>
+								@if(Auth::user()->role == 'Admin')
+									<th>Delete</th>
+									<th>Modify</th>
+								@endif
+
 							</tr>
 							@yield('forum')
 							

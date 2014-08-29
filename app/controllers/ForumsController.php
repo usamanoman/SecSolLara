@@ -77,7 +77,8 @@ class ForumsController extends BaseController {
 			return Redirect::to('/');
 		}
 		$forum=Forum::find($id);
-		return View::make('forums.show')->with(array('title'=>'Forum Topics','forum'=>$forum));
+		$forums=Forum::all();
+		return View::make('forums.show')->with(array('title'=>'Forum Topics','forum'=>$forum,'forums'=>$forums));
 	}
 
 	/**
@@ -114,6 +115,13 @@ class ForumsController extends BaseController {
 	public function destroy($id)
 	{
 		//
+		if(!Auth::check()){
+			return Redirect::to('/');
+		}
+		Forum::destroy($id);
+		Topic::where('forum_id','=',$id)->destroy();
+		Reply::where('forum_id','=',$id)->destroy();
+		return Redirect::to('forum/'.$id);
 	}
 
 }

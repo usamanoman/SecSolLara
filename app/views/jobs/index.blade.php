@@ -1,35 +1,63 @@
-@extends('forumlayout.single')
+@extends('joblayout.list')
 
 
 
-@section('forum')
-	<div class="job_listing" >
-		<div class="left_floated_heading_forum">
-		<h2 class="post_heading">Hello</h2>
-	</div>
-	<div class="right_floated_heading_forum">
-		<h2  class="post_heading"><a href="{{ URL::route('topic.create') }}">{{HTML::image('images/android_count_icon.png','Count Icon',array('class'=>'count-icon'))}} Create A New Post</a></h2>
-	</div>
+@section('joblist')
+	<div class="category">
+		<?php $k=0; ?>
+		@for($i=count($jobs)-1;$i>=0;$i--)
+			<div class="category" id="<?php echo str_replace(" " , "-", $jobs[$k]->category); ?>">
+				
+				<div class="left_floated_heading">
+					<h2 class="list_heading">{{$counts[$k]->category}} </h2>
+				</div>
+				<div class="right_floated_heading">
+					<h2 > <img src="images/android_count_icon.png" class="count-icon">{{$counts[$k]->cnt}} Jobs </h2>
+				</div>
+				
+		
+				<div class="job_list">
+					<table>
+						<tr>
+							<th>Date Posted On</th> <th>Title</th> <th>Job Type</th> <th>Location</th>
+						</tr>
+						@for($j=$counts[$k]->cnt;$j>0;$j--)
+							<tr>
+								<td>{{ $jobs[$i]->created_at }}</td><td><a href="{{ URL::route('job.show',array('id'=>$jobs[$i]->id)) }}">{{$jobs[$i]->title}}</a></td> <td>{{ $jobs[$i]->type }}</td> <td>{{$jobs[$i]->location}}</td>
+							</tr>
+
+							<?php $i--; ?>	
+						@endfor
+						
+					
+					</table>
+				</div>
+
+				
+
+
+				
+
+			</div>
+
+
+
+
 			
-		<div class="forum_table_container" style="clear:both;">
-			<table class="forum_table">
-				<tr>
-					<th>Topic</th>
-					<th>Posts</th>
-					<th>Started By</th>
-				</tr>
-				
-				
-		
-	@foreach($jobs as $job)
-	<tr>
-		<td><a href="{{ URL::route('topic.show') }}">{{$job->content}}</a></td>
-		
-	</tr>
-	@endforeach
+			
+			<?php $k++; 
+				$i++;
+			?>
+			<br>
 
-	</table>
-		</div>
+		@endfor
+		
+
+
+		
+
 	</div>
+	
+					
 
 @stop

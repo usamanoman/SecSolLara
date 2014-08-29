@@ -15,8 +15,9 @@ class JobsController extends \BaseController {
 		if(!Auth::check()){
 			return Redirect::to('/');
 		}
-		$jobs=Job::all();
-		return View::make('jobs.index')->with(array('title'=>'Job Listing','jobs'=>$jobs));
+		$counts=Job::groupBy('category')->get(array('category',DB::raw('count(*) as cnt')));
+		$jobs=Job::orderBy('category')->get();
+		return View::make('jobs.index')->with(array('title'=>'Job Listing','jobs'=>$jobs,'counts'=>$counts));
 	}
 
 	/**
@@ -28,6 +29,24 @@ class JobsController extends \BaseController {
 	public function create()
 	{
 		//
+
+		$job = new Job;
+		$job->title = "Java Developer Required";
+		$job->content = "Java Developer Required, experience should be more than 2 years and he should be expert in his work.";
+		$job->lastdate = "2014-01-01";
+		$job->category = "Full Time";
+		$job->type = "Spy Person";
+		$job->contract_type = "Yearly";
+		$job->expected_sal = "$10,000";
+		$job->location = "Azadi Square (SEA VIEW), Lahore";
+		$job->skills = "Experience, Good Eyesight";
+		$job->company = "The Azadi Corporation";
+		$job->company_logo = "images/SSW.png";
+		$job->how_to_apply = "Email us your CV at: k112119@nu.edu.pk";
+		$job->user_id = 1;
+		$job->save();
+		
+			
 	}
 
 	/**
@@ -51,7 +70,12 @@ class JobsController extends \BaseController {
 	public function show($id)
 	{
 		//
-		
+		if(!Auth::check()){
+			return Redirect::to('/');
+		}
+		$counts=Job::groupBy('category')->get(array('category',DB::raw('count(*) as cnt')));
+		$job=Job::find($id);
+		return View::make('jobs.show')->with(array('title'=>'Job Listing','job'=>$job,'counts'=>$counts));
 	}
 
 	/**

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 
 <!-- Mirrored from designarethemes.net/themes/html/yunik/ by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 19 Jun 2014 18:31:32 GMT -->
@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="images/favicon.png">
-    <title>Security Solutions Worldwide</title>
+       <title>Security Solutions Worldwide</title>
     <!-- LOAD CSS -->
     {{HTML::style('css/bootstrap.css')}}
     {{HTML::style('css/yunik.css')}}
@@ -38,7 +38,7 @@
     {{HTML::script('js/jquery.min.js')}}
     {{HTML::script('js/jquery.mb.YTPlayer.js')}}
     {{HTML::script('js/utils.js')}}
-    
+
 </head>
 <body class="demo-masonry">
   	<div id="load">
@@ -55,7 +55,7 @@
 		@include('layouts.navbar')
 		<!-- END: HEADER BAR -->        
 	  	
-	   <div class="search_row">	
+	  <div class="search_row">	
 	  <div class="container"> 
 	  	<div class="row">
 	  		<div class="col-lg-12">
@@ -80,22 +80,21 @@
 			<div class="col-lg-3">
 				<div class="side_bar">
 					<h2 class="list_heading">
-						Hot Topics
+						Job Categories
 					</h2>
 					<ul>
-						@foreach($forums as $forum)
-							@foreach($forum->topics as $topic)
-								<li><a href="#">{{$topic->title}}</a></li>
-							@endforeach
+						@foreach($counts as $count)
+							<li><a href="#<?php echo str_replace(" " , "-", $count->category); ?>">{{$count->category}}</a></li>
 						@endforeach
+						
 					</ul>
 				</div>
 
 			</div> 
 			<div class="col-lg-9">
-
-				
-				@yield('forum')
+				<div class="job_listing">
+					@yield('joblist')
+				</div>
 				
 			</div> 
 			
@@ -113,13 +112,12 @@
 
 
 
- 	@include('forumlayout.footer')
-	    
-	
+
+	@include('forumlayout.footer');
 		
 		
 	
-	
+
 	<!-- GO TOP BUTTON -->
 	<p id="back-top"><a href="#home"><i class="fa fa-angle-up"></i></a></p>
 	
@@ -137,8 +135,6 @@
     {{HTML::script('rs-plugin/js/jquery.themepunch.plugins.min.js')}}
     {{HTML::script('rs-plugin/js/jquery.themepunch.revolution.min.js')}}
     {{HTML::script('js/owl.carousel.min.js')}}
-    	
-		
  
 	
 </body>
