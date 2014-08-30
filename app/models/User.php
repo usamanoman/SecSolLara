@@ -74,6 +74,14 @@ class User extends Eloquent  implements UserInterface, RemindableInterface {
     'password'=>'required|alpha_num|between:6,12'
     );
 
+
+    public static $editrules = array(
+    'firstname'=>'required|alpha|min:2',
+    'lastname'=>'required|alpha|min:2',
+    'password'=>'required|alpha_num|between:6,12'
+    );
+
+
  	public static $loginrules = array(
     'email'=>'required|email',
     'password'=>'required|alpha_num|between:6,12'

@@ -15,4 +15,9 @@ class Job extends \Eloquent {
     	'expected_sal'=>'required|min:2',
     		
     );
+
+    public function user()
+    {
+        return $this->belongsTo('User');
+    }
 }

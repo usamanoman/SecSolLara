@@ -48,23 +48,6 @@ class JobsController extends \BaseController {
 	public function store()
 	{
 		//
-/*
-		$job = new Job;
-		$job->title = "Java Developer Required";
-		$job->content = "Java Developer Required, experience should be more than 2 years and he should be expert in his work.";
-		$job->lastdate = "2014-01-01";
-		$job->category = "Full Time";
-		$job->type = "Spy Person";
-		$job->contract_type = "Yearly";
-		$job->expected_sal = "$10,000";
-		$job->location = "Azadi Square (SEA VIEW), Lahore";
-		$job->skills = "Experience, Good Eyesight";
-		$job->company = "The Azadi Corporation";
-		$job->company_logo = "images/SSW.png";
-		$job->how_to_apply = "Email us your CV at: k112119@nu.edu.pk";
-		$job->user_id = 1;
-		$job->save();*/
-
 		$validator = Validator::make(Input::all(), Job::$rules);
  
 	    if ($validator->passes()) {
@@ -141,6 +124,13 @@ class JobsController extends \BaseController {
 	public function destroy($id)
 	{
 		//
+
+		if(!Auth::check()){
+			return Redirect::to('/');
+		}
+		Job::destroy($id);
+		return Redirect::to('job');
+		
 	}
 
 }

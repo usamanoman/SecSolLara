@@ -76,10 +76,23 @@
 				<p>
 					{{$job->content}}
 				</p>
+				<br>
+				@if(Auth::user()->role == 'Admin' || Auth::user()->id == $job->user->id)
+						<a href="{{URL::route('job.edit',array('id'=>$job->id))}}">Edit</a>
+						<h4>Want to remove this posting?</h4>
+						{{Form::open(array('method'=>'DELETE', 'url'=>'job/'.$job->id))}}
+							<button>Delete</button>
+						{{Form::close()}}
+											
+				@endif
+
+
 			</Div>
 			<div class="col-lg-3">
 				<p><b>COMPANY</b></p>
-				<p>{{$job->company}}</p>
+				<p>{{$job->user->company}}</p>
+				<p><b>COMPANY Logo</b></p>
+				<p>{{ HTML::image('logo/'.$job->user->company_logo, "COMPANY LOGO", array('class' => 'logo')) }}</p>
 				<p><b>JOB TYPE</b></p>
 				<p>Project</p>
 				<p><b>LOCATION</b></p>

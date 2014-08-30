@@ -16,7 +16,7 @@
             <li >{{ $error }}</li>
         @endforeach
     	</ul>
-		{{Form::open(array('action' => 'UsersController@store', 'method' => 'post','class'=>'well'))}}
+		{{Form::open(array('method'=>'PATCH','route' => array('user.update', $user->id) ,'class'=>'well',"enctype"=>"multipart/form-data"))}}
 		  
 
 		  <div class="form-group">
@@ -27,10 +27,7 @@
 		    <label for="lastname">Last Name</label>
 		   {{ Form::text('lastname', $user->lastname, array('class'=>'form-control', 'placeholder'=>'Last Name')) }}
 		  </div>
-		  <div class="form-group">
-		    <label for="email">Email address</label>
-		   {{ Form::email('email', $user->email, array('class'=>'form-control', 'placeholder'=>'Email Address')) }}
-		  </div>
+		  
 		  <div class="form-group">
 		    <label for="password">Password</label>
 		    {{ Form::password('password', array('class'=>'form-control', 'placeholder'=>'Password')) }}
@@ -38,13 +35,13 @@
 
 		  <div class="form-group">
 		    <label for="company">Company</label>
-		    {{ Form::password('company', array('class'=>'form-control', 'placeholder'=>'Company Name')) }}
+		    {{ Form::text('company', $user->company,array('class'=>'form-control', 'placeholder'=>'Company Name')) }}
 		  </div>
 		  
 
 		  <div class="form-group">
-		    <label for="password">Company Logo</label>
-		    {{ Form::file('company_logo','',array('id'=>'company_logo','class'=>'form-control')) }}
+		    <label for="company_logo">Company Logo</label>
+		    {{ Form::file('company_logo',null,array('id'=>'company_logo','class'=>'form-control')) }}
 		  </div>
 		  	
 
@@ -56,7 +53,7 @@
 		  
 		  
 
-		   {{ Form::submit('Register', array('class'=>'btn btn-large btn-primary btn-block'))}}
+		   {{ Form::submit('Update Profile', array('class'=>'btn btn-large btn-primary btn-block'))}}
 		{{Form::close()}}
 
 
