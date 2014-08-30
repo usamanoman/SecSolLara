@@ -10,7 +10,11 @@
 		<td>{{ count($forum->topics)}}</td>
 		<td>{{ count($forum->topics)+ count($forum->replies) }}</td>
 		@if(Auth::user()->role == 'Admin')
-			<td><a href="{{URL::route('forum.destroy',array('id'=>$forum->id))}}">Remove</a></td>
+			<td>
+				{{Form::open(array('method'=>'DELETE', 'url'=>'forum/'.$forum->id))}}
+				<button>Remove</button>
+				{{Form::close()}}
+			</td>
 			<td><a href="{{URL::route('forum.edit',array('id'=>$forum->id))}}">Edit</a></td>
 			
 		@endif

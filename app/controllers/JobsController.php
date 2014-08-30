@@ -30,6 +30,25 @@ class JobsController extends \BaseController {
 	{
 		//
 
+		if(!Auth::check()){
+			return Redirect::to('/');
+		}
+		$counts=Job::groupBy('category')->get(array('category',DB::raw('count(*) as cnt')));
+		return View::make('jobs.create')->with(array('title'=>'Create A Job','counts'=>$counts));
+		
+			
+	}
+
+	/**
+	 * Store a newly created resource in storage.
+	 * POST /jobs
+	 *
+	 * @return Response
+	 */
+	public function store()
+	{
+		//
+/*
 		$job = new Job;
 		$job->title = "Java Developer Required";
 		$job->content = "Java Developer Required, experience should be more than 2 years and he should be expert in his work.";
@@ -44,20 +63,32 @@ class JobsController extends \BaseController {
 		$job->company_logo = "images/SSW.png";
 		$job->how_to_apply = "Email us your CV at: k112119@nu.edu.pk";
 		$job->user_id = 1;
-		$job->save();
-		
-			
-	}
+		$job->save();*/
 
-	/**
-	 * Store a newly created resource in storage.
-	 * POST /jobs
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
+		$validator = Validator::make(Input::all(), Job::$rules);
+ 
+	    if ($validator->passes()) {
+	    	$job = new Job;
+			$job->title = Input::get('title');
+			$job->content = Input::get('content');
+			$job->lastdate = Input::get('lastdate');
+			$job->category = Input::get('category');
+			$job->type = Input::get('type');
+			$job->contract_type = Input::get('contract_type');
+			$job->expected_sal = Input::get('expected_sal');
+			$job->location = Input::get('location');
+			$job->skills = Input::get('skills');
+			$job->company = "The Azadi Corporation";
+			$job->company_logo = "images/SSW.png";
+			$job->how_to_apply = Input::get('how_to_apply');
+			$job->user_id =Auth::user()->id;
+			$job->save();
+
+			return Redirect::to('job/create')->with(array('message'=>'The forum has been created','title'=>'Create Job'));
+	    }
+	    else{
+	    	 return Redirect::to('job/create')->with('title','Create Job')->withErrors($validator)->withInput();
+	    }
 	}
 
 	/**

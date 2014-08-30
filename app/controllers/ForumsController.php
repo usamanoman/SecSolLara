@@ -119,9 +119,9 @@ class ForumsController extends BaseController {
 			return Redirect::to('/');
 		}
 		Forum::destroy($id);
-		Topic::where('forum_id','=',$id)->destroy();
-		Reply::where('forum_id','=',$id)->destroy();
-		return Redirect::to('forum/'.$id);
+		Topic::where('forum_id','=',$id)->delete();
+		Reply::where('forum_id','=',$id)->delete();
+		return Redirect::to('forum');
 	}
 
 }

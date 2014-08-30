@@ -22,6 +22,9 @@ class CreateUsersTable extends Migration {
 			$table->string('role');
 			$table->rememberToken();
 			$table->integer('isactive');
+			$table->string('company');
+			$table->string('company_logo');
+			$table->integer('ispremium');
 			$table->timestamps();
 		});
 	}
