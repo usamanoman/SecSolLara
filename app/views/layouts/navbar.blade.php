@@ -18,7 +18,8 @@
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav navbar-right">
               @if(Auth::check())
-                <li><a class="nav-to" href="{{ URL::route('forum.create') }}">Create A Admin</a></li>
+                <li><a class="nav-to" href="{{ URL::route('user.edit',array('id'=>Auth::user()->id)) }}">Edit Profile</a></li>
+                <li><a class="nav-to" href="{{ URL::route('user.create_admin') }}">Create A Admin</a></li>
                 <li><a class="nav-to" href="{{ URL::route('job.create') }}">Create A Job</a></li>
                 <li><a class="nav-to" href="{{ URL::route('forum.create') }}">Create A Forum</a></li>
                 <li><a class="nav-to" href="{{ URL::route('forum.index') }}">Forum</a></li>

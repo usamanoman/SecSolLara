@@ -81,6 +81,11 @@ class UsersController extends \BaseController {
 	public function edit($id)
 	{
 		//
+		if(!Auth::check()){
+			return Redirect::to('/');
+		}
+		$user=User::find($id);
+		return View::make('users.edit')->with(array('title'=>'Edit Profile','user'=>$user));
 	}
 
 	/**
@@ -93,6 +98,24 @@ class UsersController extends \BaseController {
 	public function update($id)
 	{
 		//
+
+		$destinationPath = '';
+	    $filename        = '';
+
+	    if (Input::hasFile('image')) {
+	        $file            = Input::file('image');
+	        $destinationPath = '/img/';
+	        $filename        = str_random(6) . '_' . $file->getClientOriginalName();
+	        $uploadSuccess   = $file->move($destinationPath, $filename);
+	    }
+
+
+	    $pizza = Pizza::create(['name'       => Input::get('name'),
+	                           'price'       => Input::get('price'),
+	                           'ingredients' => Input::get('ingredients'),
+	                           'active'      => Input::get('active'),
+	                           'path'        => $destinationPath . $filename]);
+
 	}
 
 	/**
@@ -149,5 +172,35 @@ class UsersController extends \BaseController {
 	public function logout(){
 		Auth::logout();
     	return Redirect::to('user/login')->with('message', 'Your are now logged out!');
+	}
+
+
+	public function createAdmin(){
+		if(!Auth::check()){
+			return Redirect::to('/');
+		}
+		return View::make('users.create_admin')->with(array('title'=>'Create Admin'));
+	}
+	public function storeAdmin(){
+		if(!Auth::check()){
+			return Redirect::to('/');
+		}
+		$validator = Validator::make(Input::all(), User::$rules);
+ 
+	    if ($validator->passes()) {
+	        $user = new User;
+		    $user->firstname = Input::get('firstname');
+		    $user->lastname = Input::get('lastname');
+		    $user->email = Input::get('email');
+		    $user->password = Hash::make(Input::get('password'));
+		    $user->role = Input::get('role');
+		    $user->save();
+		 
+		    return Redirect::to('user/createAdmin')->with(array('message'=>'Thanks for registering!','title'=>'Add Admin'));
+	    } else {
+	        // validation has failed, display error messages
+	         return Redirect::to('user/createAdmin')->with('title','Add Admin')->withErrors($validator)->withInput();
+   			//echo "Not Valid";
+	    }
 	}
 }

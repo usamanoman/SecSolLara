@@ -83,11 +83,14 @@
 						Hot Topics
 					</h2>
 					<ul>
+					@if(isset($forums))
 						@foreach($forums as $forum)
 							@foreach($forum->topics as $topic)
 								<li><a href="#">{{$topic->title}}</a></li>
 							@endforeach
 						@endforeach
+
+					@endif
 					</ul>
 				</div>
 

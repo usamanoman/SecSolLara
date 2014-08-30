@@ -78,8 +78,6 @@ class JobsController extends \BaseController {
 			$job->expected_sal = Input::get('expected_sal');
 			$job->location = Input::get('location');
 			$job->skills = Input::get('skills');
-			$job->company = "The Azadi Corporation";
-			$job->company_logo = "images/SSW.png";
 			$job->how_to_apply = Input::get('how_to_apply');
 			$job->user_id =Auth::user()->id;
 			$job->save();

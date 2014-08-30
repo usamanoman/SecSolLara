@@ -17,7 +17,7 @@
 				
 		
 				<div class="job_list">
-					<table>
+					<table style="width:100%" >
 						<tr>
 							<th>Date Posted On</th> <th>Title</th> <th>Job Type</th> <th>Location</th>
 						</tr>
