@@ -100,6 +100,12 @@ class JobsController extends \BaseController {
 	public function edit($id)
 	{
 		//
+		if(!Auth::check()){
+			return Redirect::to('/');
+		}
+		$job=Job::find($id);
+		$counts=Job::groupBy('category')->get(array('category',DB::raw('count(*) as cnt')));
+		return View::make('jobs.edit')->with(array('title'=>'Edit Job','job'=>$job,'counts'=>$counts));
 	}
 
 	/**
@@ -112,6 +118,38 @@ class JobsController extends \BaseController {
 	public function update($id)
 	{
 		//
+
+		if(!Auth::check()){
+			return Redirect::to('/');
+		}
+		$validator = Validator::make(Input::all(), Job::$rules);
+ 
+	    if ($validator->passes()) {
+	    	$job =  Job::find($id);
+			$job->title = Input::get('title');
+			$job->content = Input::get('content');
+			$job->lastdate = Input::get('lastdate');
+			$job->category = Input::get('category');
+			$job->type = Input::get('type');
+			$job->contract_type = Input::get('contract_type');
+			$job->expected_sal = Input::get('expected_sal');
+			$job->location = Input::get('location');
+			$job->skills = Input::get('skills');
+			$job->how_to_apply = Input::get('how_to_apply');
+			$job->user_id =Auth::user()->id;
+			$job->save();
+		 	$job=Job::find($id);
+			$counts=Job::groupBy('category')->get(array('category',DB::raw('count(*) as cnt')));
+			return Redirect::to('job/'.$id.'/edit')->with(array('title'=>'Edit Job','job'=>$job,'counts'=>$counts));
+		    
+	    }else {
+	        // validation has failed, display error messages
+	        $user=User::find($id);
+	        $job=Job::find($id);
+			$counts=Job::groupBy('category')->get(array('category',DB::raw('count(*) as cnt')));
+			return Redirect::to('job/'.$id.'/edit')->with(array('title'=>'Edit Job','job'=>$job,'counts'=>$counts))->withErrors($validator)->withInput();
+   			//echo "Not Valid";
+	    } 
 	}
 
 	/**
