@@ -1,3 +1,8 @@
+<style>
+.navbar>.container .navbar-brand{
+  margin-left: 0px !important;  
+}
+</style>
 <div class="navbar navbar-default light-menu navbar-fixed-top" role="navigation">
       <!-- BEGIN: NAV-CONTAINER -->
       <div class="nav-container container">
@@ -11,7 +16,7 @@
               </button>
               
               <!-- BEGIN: LOGO -->
-              {{ HTML::image('images/SSW.png', "Security Solutions Worldwide Logo", array('class' => 'navbar-brand nav-to logo')) }}
+              {{ HTML::image('images/SSW121.png', "Security Solutions Worldwide Logo", array('class' => 'navbar-brand nav-to logo')) }}
             </div>
             
             <!-- BEGIN: MENU -->       

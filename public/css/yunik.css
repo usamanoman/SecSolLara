@@ -650,16 +650,13 @@ ul.sm li *,ul.sm li *:before,ul.sm li *:after{-moz-box-sizing:content-box;-webki
 	line-height: 64px;
 }
 .logo{
-	background: url(../images/SSW.png) top left no-repeat;
-	width: 130px;
+	width: 74px;
 	position: relative;
 	height: 68px;
 	
 }
 .navbar-shrink .logo{
-	background: url(../images/SSW.png) top left no-repeat;
-/* 	margin: 20px 0 0 40px; */
-	width: 130px;
+	width: 74px;
 	height: 68px;
 }
 .navbar-shrink .navbar-toggle{

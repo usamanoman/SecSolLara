@@ -76,7 +76,7 @@
 								data-speed="1000"
 								data-start="1000"
 								data-easing="Back.easeInOut"
-								data-endspeed="300"><img src="images/SSW.png" height="120" width="200"  >Security 
+								data-endspeed="300"><img src="images/SSW121.png"  style="height:116px !important; width:125px !important;"  >Security 
 							</div>
 							
 							<!-- Caption #02 -->
