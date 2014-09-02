@@ -171,4 +171,17 @@ class JobsController extends \BaseController {
 		
 	}
 
+
+	public function search(){
+		if(!Auth::check()){
+			return Redirect::to('/');
+		}
+		$counts=Job::groupBy('category')->get(array('category',DB::raw('count(*) as cnt')));
+		$jobs=Job::where('type',Input::get('query'))->orderBy('category')->get();
+		return View::make('jobs.index')->with(array('title'=>'Job Listing','jobs'=>$jobs,'counts'=>$counts));
+
+
+
+	}
+
 }

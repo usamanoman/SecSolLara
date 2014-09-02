@@ -141,8 +141,8 @@ class UsersController extends \BaseController {
 		        $user= User::find($id);
 		    	$user->firstname = Input::get('firstname');
 			    $user->lastname = Input::get('lastname');
-			    if(!empty($_POST['ispremimum'] ) && isset($_POST['ispremimum']))
-			    	$user->ispremimum = Input::get('ispremimum');	
+			    if(!empty($_POST['ispremium'] ) && isset($_POST['ispremium']))
+			    	$user->ispremium = Input::get('ispremium');	
 			    $user->password = Hash::make(Input::get('password'));
 			    $user->save();
 			 	return Redirect::to('user/'.$id.'/edit')->with(array('title'=>'Edit Profile','user'=>$user));

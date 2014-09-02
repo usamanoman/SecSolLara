@@ -2,10 +2,12 @@
 
 
 
+
 @section('joblist')
+
 	<div class="category">
 		<?php $k=0; ?>
-		@for($i=count($jobs)-1;$i>=0;$i--)
+		@for($i=0;$i<count($jobs);$i++)
 			<div class="category" id="<?php echo str_replace(" " , "-", $jobs[$k]->category); ?>">
 				
 				<div class="left_floated_heading">
@@ -22,11 +24,11 @@
 							<th>Date Posted On</th> <th>Title</th> <th>Job Type</th> <th>Location</th>
 						</tr>
 						@for($j=$counts[$k]->cnt;$j>0;$j--)
-							<tr>
+							<tr <?php if($jobs[$i]->user->ispremium == 1) { echo "class='premium' "; }  ?> >
 								<td>{{ $jobs[$i]->created_at }}</td><td><a href="{{ URL::route('job.show',array('id'=>$jobs[$i]->id)) }}">{{$jobs[$i]->title}}</a></td> <td>{{ $jobs[$i]->type }}</td> <td>{{$jobs[$i]->location}}</td>
 							</tr>
 
-							<?php $i--; ?>	
+							<?php $i++; ?>	
 						@endfor
 						
 					
@@ -46,7 +48,7 @@
 			
 			
 			<?php $k++; 
-				$i++;
+				$i--;
 			?>
 			<br>
 

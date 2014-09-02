@@ -17,6 +17,8 @@ Route::get('/user/logout',array('as'=>'user.logout','uses'=>'UsersController@log
 Route::get('/user/createAdmin',array('as'=>'user.create_admin','uses'=>'UsersController@createAdmin'));
 Route::post('/user/createAdmin',array('as'=>'user.storeAdmin','uses'=>'UsersController@storeAdmin'));
 Route::post('/user/login',array('as'=>'user.postlogin','uses'=>'UsersController@postlogin'));
+Route::post('/job/search',array('as'=>'job.search','uses'=>'JobsController@search'));
+
 Route::resource('user', 'UsersController');
 Route::resource('forum', 'ForumsController');
 Route::resource('job', 'JobsController');

@@ -47,7 +47,7 @@
 
 
 		  @if(Auth::user()->role == 'Admin' && Auth::user()->id != $user->id)
-		  	 <label for="premium">Premium?</label>
+		  	 <label for="ispremium">Premium?</label>
 		     <select class='form-control' name="ispremium">
 		    	 <option value="0">Non Premium </option>
 		    	 <option value="1">Premium </option>

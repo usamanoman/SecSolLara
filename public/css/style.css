@@ -33,3 +33,9 @@
 .center_align{
 	text-align:center;
 }
+.job_list table tr {
+			height: 50px !important;
+}
+.premium{
+	background-color: #FFBE9F;
+}

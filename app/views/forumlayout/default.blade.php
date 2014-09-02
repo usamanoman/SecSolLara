@@ -59,9 +59,9 @@
 	  	<div class="row">
 	  		<div class="col-lg-12">
 	  			<div class="search_option">
-	  				<form class="form-inline search_form" role="form">
+	  				<form class="form-inline search_form" action="job/search" method="post" role="form">
 					  <div class="form-group">
-					    <input type="text" class="form-control" id="exampleInputEmail2" placeholder="What kind of job are you looking for?">
+					    <input type="text" name="query" class="form-control" placeholder="What kind of job are you looking for?">
 					  </div>
 					  <button type="submit" class="btn btn-default">Search</button>
 					</form>
