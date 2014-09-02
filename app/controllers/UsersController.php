@@ -13,6 +13,11 @@ class UsersController extends \BaseController {
 	public function index()
 	{
 		//
+		if(!Auth::check() ||  Auth::user()->role != 'Admin'){
+			return Redirect::to('/');
+		}
+		$users = User::all();
+		return View::make('users.index')->with(array('title'=>'All Users' , 'users' => $users));
 	}
 
 	/**
@@ -101,31 +106,54 @@ class UsersController extends \BaseController {
 		if(!Auth::check()){
 			return Redirect::to('/');
 		}
-		$file = Input::file('company_logo');
-		$destinationPath =public_path() . '/logo';
-		// If the uploads fail due to file system, you can try doing public_path().'/uploads' 
-		$filename = str_random(4) . $file->getClientOriginalName();
-		//$filename = $file->getClientOriginalName();
-		//$extension =$file->getClientOriginalExtension(); 
-		$upload_success = Input::file('company_logo')->move($destinationPath, $filename);
 
-	    $validator = Validator::make(Input::all(), User::$editrules);
-	    if ($validator->passes()) {
-	        $user= User::find($id);
-	    	$user->firstname = Input::get('firstname');
-		    $user->lastname = Input::get('lastname');
-		    $user->password = Hash::make(Input::get('password'));
-		    $user->company = Input::get('company');
-		    $user->company_logo = $filename;
-		    $user->save();
-		 	return Redirect::to('user/'.$id.'/edit')->with(array('title'=>'Edit Profile','user'=>$user));
-		    
-	    }else {
-	        // validation has failed, display error messages
-	        $user=User::find($id);
-	         return Redirect::to('user/'.$id.'/edit')->with(array('title'=>'Edit Profile','user'=>$user))->withErrors($validator)->withInput();
-   			//echo "Not Valid";
+		if(Auth::user()->role == 'Company'){
+			$file = Input::file('company_logo');
+			$destinationPath =public_path() . '/logo';
+			// If the uploads fail due to file system, you can try doing public_path().'/uploads' 
+			$filename = str_random(4) . $file->getClientOriginalName();
+			//$filename = $file->getClientOriginalName();
+			//$extension =$file->getClientOriginalExtension(); 
+			$upload_success = Input::file('company_logo')->move($destinationPath, $filename);
+
+		    $validator = Validator::make(Input::all(), User::$editrules);
+		    if ($validator->passes()) {
+		        $user= User::find($id);
+		    	$user->firstname = Input::get('firstname');
+			    $user->lastname = Input::get('lastname');
+			    $user->password = Hash::make(Input::get('password'));
+			    $user->company = Input::get('company');
+			    $user->company_logo = $filename;
+			    $user->save();
+			 	return Redirect::to('user/'.$id.'/edit')->with(array('title'=>'Edit Profile','user'=>$user));
+			    
+		    }else {
+		        // validation has failed, display error messages
+		        $user=User::find($id);
+		         return Redirect::to('user/'.$id.'/edit')->with(array('title'=>'Edit Profile','user'=>$user))->withErrors($validator)->withInput();
+	   			//echo "Not Valid";
+		    }
+
 	    } 
+	    else if(Auth::user()->role == 'User'  || Auth::user()->role == 'Admin'  ){
+	    	$validator = Validator::make(Input::all(), User::$editrules);
+		    if ($validator->passes()) {
+		        $user= User::find($id);
+		    	$user->firstname = Input::get('firstname');
+			    $user->lastname = Input::get('lastname');
+			    if(!empty($_POST['ispremimum'] ) && isset($_POST['ispremimum']))
+			    	$user->ispremimum = Input::get('ispremimum');	
+			    $user->password = Hash::make(Input::get('password'));
+			    $user->save();
+			 	return Redirect::to('user/'.$id.'/edit')->with(array('title'=>'Edit Profile','user'=>$user));
+			    
+		    }else {
+		        // validation has failed, display error messages
+		        $user=User::find($id);
+		         return Redirect::to('user/'.$id.'/edit')->with(array('title'=>'Edit Profile','user'=>$user))->withErrors($validator)->withInput();
+	   			//echo "Not Valid";
+		    }
+	    }
 
 	}
 

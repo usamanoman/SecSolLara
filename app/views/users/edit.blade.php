@@ -33,17 +33,27 @@
 		    {{ Form::password('password', array('class'=>'form-control', 'placeholder'=>'Password')) }}
 		  </div>
 
+		  @if(Auth::user()->role == 'Company')
 		  <div class="form-group">
 		    <label for="company">Company</label>
 		    {{ Form::text('company', $user->company,array('class'=>'form-control', 'placeholder'=>'Company Name')) }}
 		  </div>
 		  
-
 		  <div class="form-group">
 		    <label for="company_logo">Company Logo</label>
 		    {{ Form::file('company_logo',null,array('id'=>'company_logo','class'=>'form-control')) }}
 		  </div>
-		  	
+		  @endif
+
+
+		  @if(Auth::user()->role == 'Admin' && Auth::user()->id != $user->id)
+		  	 <label for="premium">Premium?</label>
+		     <select class='form-control' name="ispremium">
+		    	 <option value="0">Non Premium </option>
+		    	 <option value="1">Premium </option>
+		    	 
+		     </select>
+		  @endif
 
 		  <div class="form-group">
 		    <label for="userrole">Role</label>
