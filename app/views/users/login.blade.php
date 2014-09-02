@@ -11,7 +11,8 @@
 			</p>
 		@endif
 
-
+		<h2 class="center_align">LOGIN</h2>
+		
 		
     	<ul class="notfiy">
     	@foreach($errors->all() as $error)

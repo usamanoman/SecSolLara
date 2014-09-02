@@ -22,7 +22,7 @@
             <!-- BEGIN: MENU -->       
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav navbar-right">
-              @if(Auth::check())
+              @if(Auth::check() && Auth::user()->role == 'Admin')
                 <li><a class="nav-to" href="{{ URL::route('user.edit',array('id'=>Auth::user()->id)) }}">Edit Profile</a></li>
                 <li><a class="nav-to" href="{{ URL::route('user.create_admin') }}">Create A Admin</a></li>
                 <li><a class="nav-to" href="{{ URL::route('job.create') }}">Create A Job</a></li>
@@ -30,6 +30,15 @@
                 <li><a class="nav-to" href="{{ URL::route('forum.index') }}">Forum</a></li>
                 <li><a class="nav-to" href="{{ URL::route('job.index') }}">Job Listings</a></li>
                 <li>{{ HTML::link('user/logout','Logout',array('class'=>'nav-to')) }}</li>
+              @elseif(Auth::check() && Auth::user()->role == 'Company')
+                <li><a class="nav-to" href="{{ URL::route('user.edit',array('id'=>Auth::user()->id)) }}">Edit Profile</a></li>
+                <li><a class="nav-to" href="{{ URL::route('job.create') }}">Create A Job</a></li>
+                <li><a class="nav-to" href="{{ URL::route('forum.index') }}">Forum</a></li>
+                <li><a class="nav-to" href="{{ URL::route('job.index') }}">Job Listings</a></li>
+              @elseif(Auth::check() && Auth::user()->role == 'User')
+                <li><a class="nav-to" href="{{ URL::route('user.edit',array('id'=>Auth::user()->id)) }}">Edit Profile</a></li>
+                <li><a class="nav-to" href="{{ URL::route('forum.index') }}">Forum</a></li>
+                <li><a class="nav-to" href="{{ URL::route('job.index') }}">Job Listings</a></li>
               @else
                 <li><a class="nav-to" href="#home-fsslider">HOME</a></li>
                 <li><a class="nav-to" href="#about">About US</a></li>
