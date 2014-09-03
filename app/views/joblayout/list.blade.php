@@ -113,7 +113,7 @@
 
 
 
-	@include('forumlayout.footer');
+	@include('forumlayout.footer')
 		
 		
 	

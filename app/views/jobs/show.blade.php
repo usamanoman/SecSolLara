@@ -22,6 +22,20 @@
 						</td>
 					</tr>
 
+
+					<tr>
+						<th>
+							Company Status
+						</th>
+						<td>
+							@if($job->user->ispremium==0)
+								Not Varified
+							@else
+								Varified
+							@endif
+						</td>
+					</tr>
+
 					<tr>
 						<th>
 							Skills

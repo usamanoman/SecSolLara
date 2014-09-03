@@ -65,7 +65,11 @@ class JobsController extends \BaseController {
 			$job->user_id =Auth::user()->id;
 			$job->save();
 			$counts=Job::groupBy('category')->get(array('category',DB::raw('count(*) as cnt')));
-		
+			Mail::send('emails.Jobs', array(), function($message)
+			{
+			  $message->to('k112119@nu.edu.pk', 'Administrator')
+			          ->subject('A Job has been posted.');
+			});
 			return View::make('jobs.create')->with(array('message'=>'The job has been created','title'=>'Create Job','counts'=>$counts));
 	    }
 	    else{
