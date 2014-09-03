@@ -1,8 +1,8 @@
-@extends('forumlayout.single')
+@extends('layouts.pro')
 
 
 
-@section('forum')
+@section('getPro')
 
 	<div>
 		<div class="error_messages">

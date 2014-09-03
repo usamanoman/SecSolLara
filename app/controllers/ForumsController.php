@@ -54,7 +54,7 @@ class ForumsController extends BaseController {
 			$topic->title=Input::get('title');
 			$topic->description=Input::get('description');
 			$topic->save();
-			return Redirect::to('forum/create')->with(array('message'=>'The forum has been created','title'=>'Create Forum'));
+			return View::make('forums.create')->with(array('message'=>'The forum has been created','title'=>'Create Forum'));
 	    }
 	    else{
 	    	 return Redirect::to('forum/create')->with('title','Create Forum')->withErrors($validator)->withInput();
@@ -123,7 +123,7 @@ class ForumsController extends BaseController {
 			$forum->save();
 		 	$forum=Forum::find($id);
 			$forums=Forum::all();
-			return Redirect::to('forum/'.$id.'/edit')->with(array('title'=>'Edit Forum','forum'=>$forum,'forums'=>$forums));
+			return View::make('forums.edit')->with(array('title'=>'Edit Forum','forum'=>$forum,'forums'=>$forums,'message'=>'Forum has been updated successfully.'));
 		    
 	    }else {
 	        // validation has failed, display error messages

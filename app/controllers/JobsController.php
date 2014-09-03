@@ -64,8 +64,9 @@ class JobsController extends \BaseController {
 			$job->how_to_apply = Input::get('how_to_apply');
 			$job->user_id =Auth::user()->id;
 			$job->save();
-
-			return Redirect::to('job/create')->with(array('message'=>'The forum has been created','title'=>'Create Job'));
+			$counts=Job::groupBy('category')->get(array('category',DB::raw('count(*) as cnt')));
+		
+			return View::make('jobs.create')->with(array('message'=>'The job has been created','title'=>'Create Job','counts'=>$counts));
 	    }
 	    else{
 	    	 return Redirect::to('job/create')->with('title','Create Job')->withErrors($validator)->withInput();
@@ -140,7 +141,7 @@ class JobsController extends \BaseController {
 			$job->save();
 		 	$job=Job::find($id);
 			$counts=Job::groupBy('category')->get(array('category',DB::raw('count(*) as cnt')));
-			return Redirect::to('job/'.$id.'/edit')->with(array('title'=>'Edit Job','job'=>$job,'counts'=>$counts));
+			return View::make('jobs.edit')->with(array('title'=>'Edit Job','job'=>$job,'counts'=>$counts,'message'=>'Job has been updated successfully'));
 		    
 	    }else {
 	        // validation has failed, display error messages

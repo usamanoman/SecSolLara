@@ -47,7 +47,8 @@ class TopicsController extends \BaseController {
 			$topic->user_id=$user_id;
 			$topic->forum_id=Input::get('forum_id');
 			$topic->save();
-			return Redirect::to('topic/create')->with(array('message'=>'The topic has been posted in the forum','title'=>'Create Topic'));
+			$forums = Forum::all();
+			return View::make('topics.create')->with(array('message'=>'The topic has been posted in the forum','title'=>'Create Topic','forums'=>$forums));
 	    }
 	    else{
 	    	 return Redirect::to('topic/create')->with('title','Create Topic')->withErrors($validator)->withInput();

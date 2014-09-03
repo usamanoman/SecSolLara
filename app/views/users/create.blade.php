@@ -4,14 +4,14 @@
 @section('content')
     <div>
 		@if(isset($message))
-			<p class="notfiy">
+			<p class="notify">
 				{{$message}}
 			</p>
 		@endif
 
 		<h2 class="center_align">SIGN UP</h2>
 		
-    	<ul class="notfiy">
+    	<ul class="notify">
     	@foreach($errors->all() as $error)
             <li >{{ $error }}</li>
         @endforeach

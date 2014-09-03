@@ -6,7 +6,7 @@
     </Div>
     <div>
     	@if(isset($message))
-			<p class="notfiy">
+			<p class="notify">
 				{{$message}}
 			</p>
 		@endif

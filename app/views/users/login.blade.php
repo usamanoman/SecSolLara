@@ -6,7 +6,7 @@
     </Div>
     <div>
     	@if(isset($message))
-			<p class="notfiy">
+			<p class="notify">
 				{{$message}}
 			</p>
 		@endif
@@ -14,7 +14,7 @@
 		<h2 class="center_align">LOGIN</h2>
 		
 		
-    	<ul class="notfiy">
+    	<ul class="notify">
     	@foreach($errors->all() as $error)
             <li >{{ $error }}</li>
         @endforeach

@@ -3,15 +3,17 @@
 
 @section('content')
     <div>
-		@if(isset($message))
-			<p class="notfiy">
-				{{$message}}
-			</p>
-		@endif
+    	@if(isset($message))
+    		<p class="notify">
+    		{{$message}}
+    		</p>
+    	@endif
 
 
+    	
+		<h2 class="center_align">Edit Profile</h2>
 		
-    	<ul class="notfiy">
+    	<ul class="notify">
     	@foreach($errors->all() as $error)
             <li >{{ $error }}</li>
         @endforeach
