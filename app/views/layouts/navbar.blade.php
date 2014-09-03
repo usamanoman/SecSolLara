@@ -16,7 +16,7 @@
               </button>
               
               <!-- BEGIN: LOGO -->
-              {{ HTML::image('images/SSW121.png', "Security Solutions Worldwide Logo", array('class' => 'navbar-brand nav-to logo')) }}
+              <a class="nav-to" href="{{URL::route('home')}}">{{ HTML::image('images/SSW121.png', "Security Solutions Worldwide Logo", array('class' => 'navbar-brand nav-to logo')) }}</a>
             </div>
             
             <!-- BEGIN: MENU -->       
@@ -34,13 +34,19 @@
               @elseif(Auth::check() && Auth::user()->role == 'Company')
                 <li><a class="nav-to" href="{{ URL::route('user.edit',array('id'=>Auth::user()->id)) }}">Edit Profile</a></li>
                 <li><a class="nav-to" href="{{ URL::route('job.create') }}">Create A Job</a></li>
+                <li><a class="nav-to" href="{{ URL::route('user.get_premium') }}">Membership</a></li>
                 <li><a class="nav-to" href="{{ URL::route('forum.index') }}">Forum</a></li>
                 <li><a class="nav-to" href="{{ URL::route('job.index') }}">Job Listings</a></li>
                 <li>{{ HTML::link('user/logout','Logout',array('class'=>'nav-to')) }}</li>
               @elseif(Auth::check() && Auth::user()->role == 'User')
                 <li><a class="nav-to" href="{{ URL::route('user.edit',array('id'=>Auth::user()->id)) }}">Edit Profile</a></li>
+                @if(Auth::user()->ispremium == 0)
+                <li><a class="nav-to" href="{{ URL::route('user.get_premium') }}">Membership</a></li>
+                @else
+                <li><a class="nav-to" href="{{ URL::route('user.get_premium') }}">Membership</a></li>
                 <li><a class="nav-to" href="{{ URL::route('forum.index') }}">Forum</a></li>
                 <li><a class="nav-to" href="{{ URL::route('job.index') }}">Job Listings</a></li>
+                @endif
                 <li>{{ HTML::link('user/logout','Logout',array('class'=>'nav-to')) }}</li>
               @else
                 <li><a class="nav-to" href="{{URL::route('home')}}">HOME</a></li>

@@ -90,7 +90,14 @@ class ForumsController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+
+		if(!Auth::check()){
+			return Redirect::to('/');
+		}
+		$forum=Forum::find($id);
+		$forums=Forum::all();
+		
+		return View::make('forums.edit')->with(array('title'=>'Edit Forum','forum'=>$forum,'forums'=>$forums));
 	}
 
 	/**
@@ -103,6 +110,28 @@ class ForumsController extends BaseController {
 	public function update($id)
 	{
 		//
+
+		if(!Auth::check()){
+			return Redirect::to('/');
+		}
+		$validator = Validator::make(Input::all(), Forum::$rules);
+ 
+	    if ($validator->passes()) {
+	    	$forum =  Forum::find($id);
+			$forum->title = Input::get('title');
+			$forum->description = Input::get('description');
+			$forum->save();
+		 	$forum=Forum::find($id);
+			$forums=Forum::all();
+			return Redirect::to('forum/'.$id.'/edit')->with(array('title'=>'Edit Forum','forum'=>$forum,'forums'=>$forums));
+		    
+	    }else {
+	        // validation has failed, display error messages
+	        $forum=Forum::find($id);
+			$forums=Forum::all();
+			return Redirect::to('forum/'.$id.'/edit')->with(array('title'=>'Edit Forum','forum'=>$forum,'forums'=>$forums))->withErrors($validator)->withInput();
+   			//echo "Not Valid";
+	    } 
 	}
 
 	/**

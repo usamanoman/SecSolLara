@@ -167,6 +167,15 @@ class UsersController extends \BaseController {
 	public function destroy($id)
 	{
 		//
+		if(!Auth::check()){
+			return Redirect::to('/');
+		}
+		User::destroy($id);
+		Topic::where('user_id','=',$id)->delete();
+		Reply::where('user_id','=',$id)->delete();
+		Job::where('user_id','=',$id)->delete();
+		
+		return Redirect::to('user');
 	}
 
 
@@ -241,5 +250,16 @@ class UsersController extends \BaseController {
 	         return Redirect::to('user/createAdmin')->with('title','Add Admin')->withErrors($validator)->withInput();
    			//echo "Not Valid";
 	    }
+	}
+
+
+	public function getPremium(){
+		if(!Auth::check())
+		{
+			return Redirect::to('/');
+		}
+		else{
+			return View::make('users/getPremium')->with('title','Become Premium Member');
+		}
 	}
 }

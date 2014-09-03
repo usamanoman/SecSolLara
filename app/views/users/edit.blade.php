@@ -61,7 +61,13 @@
 		  </div>
 
 		  
-		  
+		  <label>Don't Like The Service?</label>
+			<p>
+				<A HREF="https://www.paypal.com/cgi-bin/webscr?cmd=_subscr-find&alias=RVUAR4BPK6S9L">
+				<IMG SRC="https://www.paypalobjects.com/en_US/i/btn/btn_unsubscribe_LG.gif" BORDER="0">
+				</A>
+			</p>
+		
 
 		   {{ Form::submit('Update Profile', array('class'=>'btn btn-large btn-primary btn-block'))}}
 		{{Form::close()}}
