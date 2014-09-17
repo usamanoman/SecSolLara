@@ -113,22 +113,36 @@
 
 
 
-				  <div class="form-group">
-				    <label for="lastdate" class="col-sm-2 control-label">Last Date</label>
-				    <div class="col-sm-10">
-				      {{ Form::text('lastdate', null, ['class' => 'form-control','id'=>'lastdate','placeholder'=>'Last Date of Application']) }}
-				    </div>
-				  </div>
 				  
 
 
 
 				  <div class="form-group">
-				    <label for="how_to_apply" class="col-sm-2 control-label">How To Apply</label>
+				    <label for="poc_email" class="col-sm-2 control-label">POC Email</label>
 				    <div class="col-sm-10">
-				      {{ Form::text('how_to_apply', null, ['class' => 'form-control','id'=>'how_to_apply','placeholder'=>'How to apply']) }}
+				      {{ Form::text('poc_email', null, ['class' => 'form-control','id'=>'poc_email','placeholder'=>'Point of contact email']) }}
 				    </div>
 				  </div>
+
+
+				  
+
+				  <div class="form-group">
+				    <label for="poc_phone" class="col-sm-2 control-label">POC Phone</label>
+				    <div class="col-sm-10">
+				      {{ Form::text('poc_phone', null, ['class' => 'form-control','id'=>'poc_phone','placeholder'=>'Point of contact phone']) }}
+				    </div>
+				  </div>
+
+				  
+
+				  <div class="form-group">
+				    <label for="application_page" class="col-sm-2 control-label">Application Page</label>
+				    <div class="col-sm-10">
+				      {{ Form::text('application_page', null, ['class' => 'form-control','id'=>'application_page','placeholder'=>'Application page URL']) }}
+				    </div>
+				  </div>
+
 				  
 				  	
 

@@ -17,14 +17,15 @@ class CreateJobsTable extends Migration {
 			$table->increments('id');
 			$table->string('title');
 			$table->text('content');
-			$table->date('lastdate');
 			$table->string('category');
 			$table->string('type');
 			$table->string('contract_type');
 			$table->string('expected_sal');
 			$table->string('location');
 			$table->string('skills');
-			$table->text('how_to_apply');
+			$table->text('poc_email');
+			$table->text('application_page');
+			$table->text('poc_phone');
 			$table->integer('user_id');
 			$table->timestamps();
 		});

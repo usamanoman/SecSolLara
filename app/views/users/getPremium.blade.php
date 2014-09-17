@@ -31,7 +31,7 @@
 				<input type="hidden" name="hosted_button_id" value="GBUQCKDJTQTVW">
 				<input type="hidden" name="on0" value="Premium Member Payment Options">Premium Member Payment Options<br><select name="os0"><br>
 				<option value="Monthly">Monthly : $20.00 USD - monthly</option>
-				<option value="Yearly">Yearly : $200.00 USD - monthly</option>
+				<option value="Yearly">Yearly : $200.00 USD - yearly</option>
 				</select> <br>
 				<input type="hidden" name="currency_code" value="USD">
 				<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
@@ -74,7 +74,7 @@
 				<input type="hidden" name="hosted_button_id" value="856U5AHZ3FPCY">
 				<input type="hidden" name="on0" value="Subscription Options">Subscription Options<br><select name="os0">
 				<option value="Monthly">Monthly : $5.00 USD - monthly</option>
-				<option value="Yearly">Yearly : $50.00 USD - monthly</option>
+				<option value="Yearly">Yearly : $50.00 USD - yearly</option>
 				</select><br>
 				<input type="hidden" name="currency_code" value="USD">
 				<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">

@@ -54,22 +54,22 @@ class JobsController extends \BaseController {
 	    	$job = new Job;
 			$job->title = Input::get('title');
 			$job->content = Input::get('content');
-			$job->lastdate = Input::get('lastdate');
 			$job->category = Input::get('category');
 			$job->type = Input::get('type');
 			$job->contract_type = Input::get('contract_type');
 			$job->expected_sal = Input::get('expected_sal');
 			$job->location = Input::get('location');
 			$job->skills = Input::get('skills');
-			$job->how_to_apply = Input::get('how_to_apply');
+			$job->poc_email = Input::get('poc_email');
+			$job->poc_phone = Input::get('poc_phone');
+			$job->application_page = Input::get('application_page');
 			$job->user_id =Auth::user()->id;
 			$job->save();
 			$counts=Job::groupBy('category')->get(array('category',DB::raw('count(*) as cnt')));
-			Mail::send('emails.Jobs', array(), function($message)
-			{
-			  $message->to('k112119@nu.edu.pk', 'Administrator')
-			          ->subject('A Job has been posted.');
-			});
+			$headers = 'From: k112119@nu.edu.pk' . "\r\n" .
+		    'Reply-To: k112119@nu.edu.pk' . "\r\n" .
+		    'X-Mailer: PHP/' . phpversion();
+			mail ( "k112119@nu.edu.pk" , "A Job has been posted." , "A job has been posted in security solution worldwide: http://www.nextdime.com/secsol/public/job"  ,$headers);
 			return View::make('jobs.create')->with(array('message'=>'The job has been created','title'=>'Create Job','counts'=>$counts));
 	    }
 	    else{
@@ -133,14 +133,15 @@ class JobsController extends \BaseController {
 	    	$job =  Job::find($id);
 			$job->title = Input::get('title');
 			$job->content = Input::get('content');
-			$job->lastdate = Input::get('lastdate');
 			$job->category = Input::get('category');
 			$job->type = Input::get('type');
 			$job->contract_type = Input::get('contract_type');
 			$job->expected_sal = Input::get('expected_sal');
 			$job->location = Input::get('location');
 			$job->skills = Input::get('skills');
-			$job->how_to_apply = Input::get('how_to_apply');
+			$job->poc_email = Input::get('poc_email');
+			$job->poc_phone = Input::get('poc_phone');
+			$job->application_page = Input::get('application_page');
 			$job->user_id =Auth::user()->id;
 			$job->save();
 		 	$job=Job::find($id);

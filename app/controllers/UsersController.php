@@ -228,7 +228,7 @@ class UsersController extends \BaseController {
 		if(!Auth::check()){
 			return Redirect::to('/');
 		}
-		$validator = Validator::make(Input::all(), User::$rules);
+		$validator = Validator::make(Input::all(), User::$admin_rules);
  
 	    if ($validator->passes()) {
 	        $user = new User;

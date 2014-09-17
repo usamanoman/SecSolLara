@@ -29,9 +29,9 @@
 						</th>
 						<td>
 							@if($job->user->ispremium==0)
-								Not Varified
+								Not Verified
 							@else
-								Varified
+								Verified
 							@endif
 						</td>
 					</tr>
@@ -46,14 +46,7 @@
 					</tr>
 
 
-					<tr>
-						<th>
-							Last Date
-						</th>
-						<td>
-							{{$job->lastdate}}
-						</td>
-					</tr>
+					
 					
 					<tr>
 						<th>
@@ -113,8 +106,12 @@
 				<p>{{$job->location}}</p>
 				<p><b>BUDGET / SALARY</b></p>
 				<p>{{$job->expected_sal}}</p>
-				<p><b>HOW TO APPLY</b></p>
-				<p>{{$job->how_to_apply}}</p>
+				<h5><b>POINT OF CONTACT</b></h5>
+				<ul>
+				<li><b>POC Email :</b> {{$job->poc_email}}</li>
+				<li><b>POC Phone :</b> {{$job->poc_phone}}</li>
+				<li><b>Application Page :</b> {{$job->application_page}}</li>
+				</ul>
 			</div>
 		</div>
 
