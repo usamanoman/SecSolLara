@@ -54,6 +54,34 @@
 		@include('layouts.navbar')
 		<!-- END: HEADER BAR -->        
 	  	
+
+
+	  	<style>
+			.first_tag img{
+				height: 125px !important;
+				width: 125px !important;
+			}
+	  		/* Smartphones (portrait) ----------- */
+			@media screen and (min-width:418px) and (orientation:portrait) and (-webkit-min-device-pixel-ratio:1) and (device-aspect-ratio:683/384) { 
+  					.first_tag img{
+  						height:26px !important; 
+						width:26px !important;
+						
+  					}
+  					.tp-caption{
+			  			font-size:28px !important;
+			  				  
+			  		}
+					.last_tagline,.last_tagline b{
+						font-size: 11px !important;
+					}
+			  		.first_tag{
+			  			position: relative !important;
+						top: -355px !important;
+			  		}
+				}
+
+	  	</style>
 	  	
 	  	<!-- BEGIN: HOME REVOLUTION SLIDER -->      
 	  	<section id="home-fsslider" class="nav-sections">
@@ -67,7 +95,7 @@
 							<img src="images/parallax/img3.jpg"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
 							
 							<!-- Caption #01 -->
-							<div class="tp-caption large_bold_white_25 text-center customin customout start tp-resizeme"
+							<div class="tp-caption large_bold_white_25 text-center customin customout start tp-resizeme first_tag"
 								data-x="center"
 								data-hoffset="0"
 								data-y="190"
@@ -76,7 +104,7 @@
 								data-speed="1000"
 								data-start="1000"
 								data-easing="Back.easeInOut"
-								data-endspeed="300"><img src="images/SSW121.png"  style="height:116px !important; width:125px !important;"  >Security 
+								data-endspeed="300"><img  src="images/SSW121.png"    >Security 
 							</div>
 							
 							<!-- Caption #02 -->
@@ -167,7 +195,7 @@
 								data-endelementdelay="0.08"
 								data-end="7000"
 								data-endspeed="500"
-								style="z-index: 2; max-width: auto; max-height: auto; white-space: nowrap;font-size:100px !important; ">COMPANIES FIND WORKERS
+								style="z-index: 2; max-width: auto; max-height: auto; white-space: nowrap;font-size:100px ; ">COMPANIES FIND WORKERS
 							</div>
 							
 							<!-- Caption #03 -->
@@ -189,7 +217,7 @@
 							</div>
 							
 							<!-- Caption #04 -->
-							<div class="tp-caption lfb boldwide_small_white text-center customin customout tp-resizeme"
+							<div class="tp-caption last_tagline lfb boldwide_small_white text-center customin customout tp-resizeme"
 								data-x="center"
 								data-hoffset="0"
 								data-y="230"
@@ -198,7 +226,7 @@
 								data-speed="1000"
 								data-start="1500"
 								data-easing="Back.easeInOut"
-								style="z-index: 6">OUT <b>HARD WORK</b> SETS US APART <b>FROM</b> THE <b>COMPETITION</b>
+								style="z-index: 6">OUR <b>HARD WORK</b> SETS US APART <b>FROM</b> THE <b>COMPETITION</b>
 							</div>
 							
 								
