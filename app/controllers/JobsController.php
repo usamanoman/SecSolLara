@@ -61,6 +61,7 @@ class JobsController extends \BaseController {
 			$job->location = Input::get('location');
 			$job->skills = Input::get('skills');
 			$job->poc_email = Input::get('poc_email');
+			$job->poc_name = Input::get('poc_name');
 			$job->poc_phone = Input::get('poc_phone');
 			$job->application_page = Input::get('application_page');
 			$job->user_id =Auth::user()->id;

@@ -115,7 +115,12 @@
 
 				  
 
-
+				  <div class="form-group">
+				    <label for="poc_email" class="col-sm-2 control-label">POC Name</label>
+				    <div class="col-sm-10">
+				      {{ Form::text('poc_name', null, ['class' => 'form-control','id'=>'poc_name','placeholder'=>'Point of contact name']) }}
+				    </div>
+				  </div>	
 
 				  <div class="form-group">
 				    <label for="poc_email" class="col-sm-2 control-label">POC Email</label>

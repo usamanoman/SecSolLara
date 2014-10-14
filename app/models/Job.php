@@ -10,6 +10,7 @@ class Job extends \Eloquent {
     	'skills'=>'required|min:2',
     	'type'=>'required|min:2',
     	'poc_phone'=>'required|min:6',
+        'poc_name'=>'required|min:4', 
     	'poc_email'=>'required|min:4|email',
         'application_page' => 'required|url',
     	'contract_type'=>'required|min:2',

@@ -108,6 +108,7 @@
 				<p>{{$job->expected_sal}}</p>
 				<h5><b>POINT OF CONTACT</b></h5>
 				<ul>
+				<li><b>POC Name :</b><br> {{$job->poc_name}}</li>
 				<li><b>POC Email :</b><br> {{$job->poc_email}}</li>
 				<li><b>POC Phone :</b><br> {{$job->poc_phone}}</li>
 				<li><b>Application Page :</b><br> <a href="{{$job->application_page}}">Click to apply</a></li>

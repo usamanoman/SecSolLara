@@ -24,6 +24,7 @@ class CreateJobsTable extends Migration {
 			$table->string('location');
 			$table->string('skills');
 			$table->text('poc_email');
+			$table->text('poc_name');	
 			$table->text('application_page');
 			$table->text('poc_phone');
 			$table->integer('user_id');

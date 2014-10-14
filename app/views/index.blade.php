@@ -62,7 +62,7 @@
 				width: 125px !important;
 			}
 	  		/* Smartphones (portrait) ----------- */
-			@media screen and (min-width:418px) and (orientation:portrait) and (-webkit-min-device-pixel-ratio:1) and (device-aspect-ratio:683/384) { 
+			@media screen and (max-width:418px) and (orientation:portrait) and (-webkit-max-device-pixel-ratio:1) and (device-aspect-ratio:683/384) { 
   					.first_tag img{
   						height:26px !important; 
 						width:26px !important;
