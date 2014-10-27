@@ -367,7 +367,11 @@
 						<!-- END -->
 
 
-
+						<style>
+							.owl-wrapper-outer .owl-wrapper{
+								width:100% !important;
+							}
+						</style>
 
 						<div class="space"></div>
 						<p class="small-pwide" style="color:white">
